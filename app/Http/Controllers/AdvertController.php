@@ -16,10 +16,8 @@ class AdvertController extends Controller
      */
     public function index()
     {
-       
-        
-        $adverts = Advert::where('users_id', Auth::id())->paginate(8);  
-        
+   
+        $adverts = Advert::where('users_id', Auth::id())->paginate(8);     
         return view('myAdvertsShow',[
             'adverts' => $adverts,           
             ]);

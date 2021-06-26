@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Advert;
+use App\Models\Categorie;
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 
 class MainController extends Controller
 {
@@ -13,7 +17,11 @@ class MainController extends Controller
      */
     public function index()
     {
-        //
+        $adverts = Advert::paginate(8);
+       
+        return view('dashboard',[
+            'adverts' => $adverts,           
+            ]);
     }
 
     /**
@@ -45,7 +53,15 @@ class MainController extends Controller
      */
     public function show($id)
     {
-        //
+        $adverts = Advert::all()->where('id',$id);
+        $categories = Categorie::all();        
+        $users = User::all();
+        
+        return view('dashboardShow',[
+            'adverts' => $adverts, 
+            'categories' => $categories,
+            'users' => $users,
+            ]);
     }
 
     /**

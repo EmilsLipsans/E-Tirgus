@@ -36,8 +36,8 @@
                             <p class= ml-12>
                             <span class= ml-2>Title: {{$advert->title }}</span>
                             <span class= ml-2>Condition: {{$advert->condition }}</span>
-                            <span class= ml-2>Location: {{$advert->location }}</span>
-                            <span class= ml-2>Text: {{$advert->text }}</span>                                              
+                            <span class= ml-2>Price: {{$advert->price }}</span>
+                            <span class= ml-2>Location: {{$advert->location }}</span>                                                                         
                             </p>                        
                         </div>                   
                 @endforeach

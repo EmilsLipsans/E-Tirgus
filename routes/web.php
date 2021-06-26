@@ -19,9 +19,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard',[MainController::class, 'index'])->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard/{id}/show',[MainController::class, 'show'])->middleware(['auth'])->name('dashboardShow');
 
 Route::get('/myAdverts', function () {
     return view('myAdverts');
@@ -36,7 +35,7 @@ Route::get('/favourites', function () {
 require __DIR__.'/auth.php';
 
 Route::resource('/myAdverts/show', AdvertController::class);
-Route::resource('/dashboard/show', MainController::class);
+//Route::resource('/dashboard/show', MainController::class);
 
 
 
