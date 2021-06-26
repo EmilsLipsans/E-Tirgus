@@ -4,18 +4,23 @@
             {{ __('Create New Adverts') }}
         </h2>
     </x-slot>
-
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div align="center" class="p-6 bg-white border-b border-gray-200 right-10">
+                <a 
+                    class="m-2 boarder-b-2 pb-2 border-dotted bold text-blue-500"
+                    href="/myAdverts">
+                    Back to MyAdverts
+                </a>
+                <div align="center" class="p-6 bg-white border-b border-gray-200 right-10">                   
                     @csrf
                     <form method="POST" action="/myAdverts/show">
                         @csrf
                         <div class="grid grid-cols-1 gap-2">
+                             
                             <div class="grid grid-rows-3 gap-6">
                                 <label for="title">Title</label>
-                                <x-input id="title" class="block  w-full" type="text" name="title"/> 
+                                <x-input id="title" class="block  w-full" type="text" name="title" placeholder="Sporta jaka"/> 
                                 <label for="condition">Condition</label>
                                 <select id="condition" name="condition">
                                     <option value="NEW">NEW</option>

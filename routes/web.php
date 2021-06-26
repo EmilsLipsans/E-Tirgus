@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdvertController;
+use App\Http\Controllers\MainController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,6 +36,7 @@ Route::get('/favourites', function () {
 require __DIR__.'/auth.php';
 
 Route::resource('/myAdverts/show', AdvertController::class);
+Route::resource('/dashboard/show', MainController::class);
 
 
 
