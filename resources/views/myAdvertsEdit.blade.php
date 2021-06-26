@@ -4,7 +4,6 @@
             {{ __('Update Advert')}}
         </h2>
     </x-slot>
-
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -19,24 +18,44 @@
                                 <label for="condition">Condition</label>
                                 <select id="condition" name="condition">
                                     <option value="{{$advert->condition}}">Current - {{$advert->condition}}</option>
+                                    @if($advert->condition != 'NEW')
                                     <option value="NEW">NEW</option>
+                                    @endif
+                                    @if($advert->condition != 'USED')
                                     <option value="USED">USED</option>
+                                    @endif
+                                    @if($advert->condition != 'BROKEN')
                                     <option value="BROKEN">BROKEN</option>
+                                    @endif
                                 </select> 
                                 <label for="price">Price</label>
                                 <input class="block  w-full" type="number" name="price" value="{{$advert->price}}"/>
                                 <label for="location">Location</label>
                                 <select id="location" name="location">
                                     <option value="{{$advert->location}}">Current - {{$advert->location}}</option>
+                                    @if($advert->location != 'Riga')
                                     <option value="Riga">Riga</option>
+                                    @endif
+                                    @if($advert->location != 'Daugavpils')
                                     <option value="Daugavpils">Daugavpils</option>
+                                    @endif
+                                    @if($advert->location != 'Liepaja')
                                     <option value="Liepaja">Liepaja</option>
+                                    @endif
                                 </select>
                                 <label for="catagorie">Category</label>
-                                <select id="catagorie" name="catagorie" value="{{$advert->catagorie}}">
-                                    <option value="1">Transports</option>
-                                    <option value="2">Elektronika</option>
-                                    <option value="3">Apģērbs</option>
+                                <select id="catagorie" name="catagorie">
+                                @foreach($categories as $categorie )
+                                    @if($advert->categorie_id == $categorie->id)
+                                        <option value="{{$advert->categorie_id}}">Current - {{$categorie->name}}</option>
+                                    @endif
+                                @endforeach
+                                
+                                @foreach($categories as $categorie )
+                                    @if($advert->categorie_id != $categorie->id)
+                                        <option value="{{$advert->categorie_id}}">{{$categorie->name}}</option>
+                                    @endif
+                                @endforeach                                                                          
                                 </select> 
                                 <label for="text">Text</label>
                                 <textarea name="text" id="text" >

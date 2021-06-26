@@ -32,9 +32,9 @@
                                 </select>
                                 <label for="catagorie">Category</label>
                                 <select id="catagorie" name="catagorie">
-                                    <option value="1">Transports</option>
-                                    <option value="2">Elektronika</option>
-                                    <option value="3">Apģērbs</option>
+                                    @foreach($categories as $categorie )
+                                    <option value="{{$categorie->id }}">{{$categorie->name }}</option>
+                                    @endforeach                                    
                                 </select> 
                                 <label for="text">Text</label>
                                 <textarea name="text" id="text">

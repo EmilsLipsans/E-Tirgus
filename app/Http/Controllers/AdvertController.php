@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Advert;
+use App\Models\Categorie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use function view;
 class AdvertController extends Controller
 {
     /**
@@ -14,7 +16,10 @@ class AdvertController extends Controller
      */
     public function index()
     {
-        $adverts = Advert::where('users_id', Auth::id())->paginate(3);             
+       
+        
+        $adverts = Advert::where('users_id', Auth::id())->paginate(3);  
+        
         return view('myAdvertsShow',[
             'adverts' => $adverts,           
             ]);
@@ -27,7 +32,10 @@ class AdvertController extends Controller
      */
     public function create()
     {
-        return view('myAdvertsCreate');
+        $categories = Categorie::all();
+        return view('myAdvertsCreate',[            
+            'categories' => $categories,
+            ]);
         
         
     }
@@ -74,7 +82,11 @@ class AdvertController extends Controller
     public function edit($id)
     {
         $advert = Advert::find($id);
-        return view('myAdvertsEdit')->with('advert', $advert);
+        $categories = Categorie::all();
+//        return view('myAdvertsEdit')->with('advert', $advert);
+        
+        return view('myAdvertsEdit')->with('advert', $advert)
+                ->with('categories', $categories);
         
     }
 
