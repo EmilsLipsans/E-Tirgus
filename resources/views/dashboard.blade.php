@@ -42,7 +42,7 @@
                                 </a>
                                 <a 
                                     class="boarder-b-1 pb-1 border-dotted italic text-yellow-500"
-                                    href="">
+                                    href="favourite/{{$advert->id}}/create">
                                     Add to favourites &rarr;
                                 </a>
                                 <br>
