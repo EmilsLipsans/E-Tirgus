@@ -18,4 +18,5 @@ class Advert extends Model
     public function usersPost() {
     $posts = DB::table('adverts')->where('user_id', auth()->id())->get();
     }
+    
 }

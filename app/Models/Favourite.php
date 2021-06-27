@@ -9,4 +9,5 @@ class Favourite extends Model
 {
     use HasFactory;
     protected $table = 'marked_adverts';
+    protected $guarded = [];
 }

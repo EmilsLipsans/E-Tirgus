@@ -20,25 +20,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard',[MainController::class, 'index'])->middleware(['auth'])->name('dashboard');
-Route::get('/dashboard/{id}/show',[MainController::class, 'show'])->middleware(['auth'])->name('dashboardShow');
-
-
-Route::get('/favourites/{id}/create',[MainController::class, 'create'])->middleware(['auth'])->name('dashboardShow');
-Route::get('/favourites',[FavouriteController::class, 'index'])->middleware(['auth'])->name('favourites');
-Route::get('/favourites/{id}/show',[FavouriteController::class, 'show'])->middleware(['auth'])->name('favouritesShow');
-
-//Route::get('/favourites', function () {
-//    return view('favourites');
-//})->middleware(['auth'])->name('favourites');
-
 Route::get('/myAdverts', function () {
     return view('myAdverts');
 })->middleware(['auth'])->name('myAdverts');
 
+Route::get('/dashboard',[MainController::class, 'index'])->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard/{id}/show',[MainController::class, 'show'])->middleware(['auth'])->name('dashboardShow');
 
+Route::get('/favourites',[FavouriteController::class, 'index'])->middleware(['auth'])->name('favourites');
+Route::get('/favourites/{id}/show',[FavouriteController::class, 'show'])->middleware(['auth'])->name('favouritesShow');
 
-
+Route::post('/favourites/store',[FavouriteController::class, 'store'])->middleware(['auth'])->name('favouritesStore');
 
 require __DIR__.'/auth.php';
 

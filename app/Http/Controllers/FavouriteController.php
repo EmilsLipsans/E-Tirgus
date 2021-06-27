@@ -44,7 +44,12 @@ class FavouriteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $userId = Auth::id();
+        $favourite = Favourite::create([
+        'users_id' => $userId, 
+        'adverts_id' => $request->input('advertId'),
+        ]);
+        return redirect('/dashboard');
     }
 
     /**

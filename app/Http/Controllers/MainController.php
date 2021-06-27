@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Advert;
 use App\Models\Categorie;
+use App\Models\Favourite;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class MainController extends Controller
 {
@@ -18,9 +20,11 @@ class MainController extends Controller
     public function index()
     {
         $adverts = Advert::paginate(8);
+        $favourites = Favourite::all()->where('users_id', Auth::id());
        
         return view('dashboard',[
-            'adverts' => $adverts,           
+            'adverts' => $adverts,
+            'favourites' => $favourites, 
             ]);
     }
 
