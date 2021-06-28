@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdvertController;
 use App\Http\Controllers\FavouriteController;
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -38,13 +39,9 @@ Route::post('/favourites/store',[FavouriteController::class, 'store'])->middlewa
 Route::delete('/favourites/{id}',[FavouriteController::class, 'destroy2'])->middleware(['auth'])->name('favouritesStore');
 
 Route::get('/users',[UserController::class, 'index'])->middleware(['auth'])->name('users');
+Route::post('/users/{id}',[UserController::class, 'update'])->middleware(['auth'])->name('favouritesStore');
 require __DIR__.'/auth.php';
 
-
+Route::get('/profile',[ProfileController::class, 'index'])->middleware(['auth'])->name('profile');
 //Route::resource('/dashboard/show', MainController::class);
-
-
-
-//Route::resource('/dashboard', ShowController::class);      
-//Route::resource('/Dashboard', AdvertController::class);
 

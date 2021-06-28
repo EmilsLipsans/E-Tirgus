@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
-use Illuminate\Support\Facades\Gate;
-class UserController extends Controller
+
+class ProfileController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +15,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::where('role', 0)->paginate(8);     
-        return view('users',[
+        $users = User::all()->where('id', Auth::id());   
+        return view('profile',[
             'users' => $users,           
             ]);
     }
@@ -71,16 +72,8 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    { 
-        if(Gate::allows('is-admin'))
-        {
-            User::where('id', $id)->update(array('status' => $request->input('status')));         
-            return redirect('/users');
-        }
-        else
-        {
-            return redirect('dashboard')->withErrors('Access denied!');
-        }
+    {
+        //
     }
 
     /**
