@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class MainController extends Controller
 {
@@ -99,6 +100,15 @@ class MainController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if(Gate::allows('is-admin'))
+        {
+            $advert = Advert::find($id);
+            $advert->delete();
+            return redirect('/dashboard');
+        }
+        else
+        {
+            return redirect('dashboard')->withErrors('Access denied!');
+        }        
     }
 }

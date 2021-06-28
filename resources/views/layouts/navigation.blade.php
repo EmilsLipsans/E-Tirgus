@@ -21,6 +21,11 @@
                     <x-nav-link :href="route('favourites')" :active="request()->routeIs('favourites')">
                         {{ __('Favourites') }}
                     </x-nav-link>
+                    @can('is-admin')
+                    <x-nav-link :href="route('users')" :active="request()->routeIs('users')">
+                        {{ __('Users') }}
+                    </x-nav-link>
+                    @endcan
                 </div>
             </div>
 

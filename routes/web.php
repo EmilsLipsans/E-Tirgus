@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdvertController;
 use App\Http\Controllers\FavouriteController;
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,18 +24,23 @@ Route::get('/', function () {
 Route::get('/myAdverts', function () {
     return view('myAdverts');
 })->middleware(['auth'])->name('myAdverts');
+Route::resource('/myAdverts/show', AdvertController::class);
 
 Route::get('/dashboard',[MainController::class, 'index'])->middleware(['auth'])->name('dashboard');
 Route::get('/dashboard/{id}/show',[MainController::class, 'show'])->middleware(['auth'])->name('dashboardShow');
+Route::delete('/delete/{id}',[MainController::class, 'destroy'])->middleware(['auth'])->name('favouritesStore');
+
+Route::delete('/dashboard/{id}',[FavouriteController::class, 'destroy'])->middleware(['auth'])->name('favouritesStore');
 
 Route::get('/favourites',[FavouriteController::class, 'index'])->middleware(['auth'])->name('favourites');
 Route::get('/favourites/{id}/show',[FavouriteController::class, 'show'])->middleware(['auth'])->name('favouritesShow');
-
 Route::post('/favourites/store',[FavouriteController::class, 'store'])->middleware(['auth'])->name('favouritesStore');
+Route::delete('/favourites/{id}',[FavouriteController::class, 'destroy2'])->middleware(['auth'])->name('favouritesStore');
 
+Route::get('/users',[UserController::class, 'index'])->middleware(['auth'])->name('users');
 require __DIR__.'/auth.php';
 
-Route::resource('/myAdverts/show', AdvertController::class);
+
 //Route::resource('/dashboard/show', MainController::class);
 
 

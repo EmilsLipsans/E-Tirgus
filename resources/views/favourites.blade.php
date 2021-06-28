@@ -18,7 +18,7 @@
                                         href="favourites/{{$advert->id}}/show">
                                         Show more &rarr;
                                     </a>
-                                    <form action=""class="pt-1" method="POST">
+                                    <form action="/favourites/{{$advert->id}}"class="pt-1" method="POST">
                                         @csrf
                                         @method('delete')
                                         <button

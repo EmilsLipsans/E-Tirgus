@@ -2,14 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Advert;
-use App\Models\Categorie;
-use App\Models\Favourite;
-use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-
-class FavouriteController extends Controller
+use App\Models\User;
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,11 +13,9 @@ class FavouriteController extends Controller
      */
     public function index()
     {
-        $adverts = Advert::all();
-        $favourites = Favourite::where('users_id', Auth::id())->paginate(8);     
-        return view('favourites',[
-            'favourites' => $favourites,  
-            'adverts' => $adverts,
+        $users = User::where('role', 0)->paginate(8);     
+        return view('users',[
+            'users' => $users,           
             ]);
     }
 
@@ -44,12 +37,7 @@ class FavouriteController extends Controller
      */
     public function store(Request $request)
     {
-        $userId = Auth::id();
-        $favourite = Favourite::create([
-        'users_id' => $userId, 
-        'adverts_id' => $request->input('advertId'),
-        ]);
-        return redirect('/dashboard');
+        //
     }
 
     /**
@@ -60,15 +48,7 @@ class FavouriteController extends Controller
      */
     public function show($id)
     {
-        $adverts = Advert::all()->where('id',$id);
-        $categories = Categorie::all();        
-        $users = User::all();
-        
-        return view('favouritesShow',[
-            'adverts' => $adverts, 
-            'categories' => $categories,
-            'users' => $users,
-            ]);
+        //
     }
 
     /**
@@ -102,14 +82,6 @@ class FavouriteController extends Controller
      */
     public function destroy($id)
     {
-        $favourite = Favourite::where('adverts_id', $id);
-        $favourite->delete();
-        return redirect('dashboard');
-    }
-    public function destroy2($id)
-    {
-        $favourite = Favourite::where('adverts_id', $id);
-        $favourite->delete();
-        return redirect('favourites');
+        //
     }
 }

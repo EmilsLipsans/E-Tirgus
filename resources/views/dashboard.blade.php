@@ -41,24 +41,26 @@
                                     Show more &rarr;
                                 </a>                                
                                 @php
-                                $isfav = false;
-                                foreach ($favourites as $favourite){                                     
-                                    if($advert->id == $favourite->adverts_id){
-                                        $isfav = true;
-                                        break;                                        
-                                    }                                    
-                                }        
+                                    $isfav = false;
+                                    foreach ($favourites as $favourite){                                     
+                                        if($advert->id == $favourite->adverts_id){
+                                            $isfav = true;
+                                            break;                                        
+                                        }                                    
+                                    }        
                                 @endphp                                
                                 @if($isfav)
-                                        <form method="POST" action="/myAdverts/show">                                   
-                                            <button class="ml-3 italic text-red-500" type="submit">Remove from favourites &rarr;</button>
-                                        </form>                                    
+                                    <form method="POST" action="/dashboard/{{$advert->id}}"> 
+                                        @csrf
+                                        @method('delete')
+                                        <button class="ml-3 italic text-red-500" type="submit">Remove from favourites</button>                                           
+                                    </form>                                    
                                 @else
-                                        <form method="POST" action="/favourites/store">
-                                            @csrf
-                                            <input type="hidden" id="advertId" name="advertId" value="{{$advert->id}}">
-                                            <button class="ml-3 italic text-yellow-500" type="submit">Add to favourites &rarr;</button>
-                                        </form>
+                                    <form method="POST" action="/favourites/store">
+                                        @csrf
+                                        <input type="hidden" id="advertId" name="advertId" value="{{$advert->id}}">
+                                        <button class="ml-3 italic text-yellow-500" type="submit">Add to favourites</button>
+                                    </form>
                                 @endif    
                                 
                             </div>
@@ -66,22 +68,25 @@
                                 <span class= ml-2>Title: {{$advert->title }}</span>
                                 <span class= ml-2>Condition: {{$advert->condition }}</span>
                                 <span class= ml-2>Price: {{$advert->price }}</span> 
-                                <span class= ml-2>Location: {{$advert->location }}</span> 
-<!--                                <span>
-                                    <form action="show/{{$advert->id}}"class="pt-1" method="POST">
-                                        @csrf
-                                        @method('delete')
-                                        <button
-                                            type="submit"
-                                            class="ml-3 italic text-red-500">
-                                            Delete advert &#10060;
-                                        </button>
-                                </span>-->
-                                </form>
-                            </p>                        
-                        </div>                   
+                                <span class= ml-2>Location: {{$advert->location }}</span>
+                            </p>
+                            @can('is-admin')
+                                <div>
+                                    <span>
+                                        <form action="delete/{{$advert->id}}"class="pt-1" method="POST">
+                                            @csrf
+                                            @method('delete')
+                                            <button
+                                                type="submit"
+                                                class="ml-3 italic text-red-500">
+                                                Delete advert &#10060;
+                                            </button>
+                                        </form>
+                                    </span>    
+                                </div>
+                            @endcan                           
+                        </div>
                     @endforeach
-                </div>
             {{$adverts->links() }}
             </div>
         </div>
