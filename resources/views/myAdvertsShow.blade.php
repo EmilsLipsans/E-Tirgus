@@ -18,6 +18,7 @@
                 @foreach ($adverts as $advert)                    
                         <div class="p-6 bg-white border-b border-gray-200">
                             <div class="float-right">
+                                
                                 <a 
                                     class="boarder-b-2 pb-2 border-dotted italic text-green-500"
                                     href="show/{{$advert->id}}/edit">
@@ -37,7 +38,14 @@
                             <span class= ml-2>Title: {{$advert->title }}</span>
                             <span class= ml-2>Condition: {{$advert->condition }}</span>
                             <span class= ml-2>Price: {{$advert->price }}</span>
-                            <span class= ml-2>Location: {{$advert->location }}</span>                                                                         
+                            <span class= ml-2>Location: {{$advert->location }}</span>
+                            <span>
+                                <a 
+                                    class="ml-3 italic text-gray-500"
+                                    href="{{$advert->id}}/show">
+                                    Show more &rarr;
+                                </a>
+                            </span>
                             </p>                        
                         </div>                   
                 @endforeach

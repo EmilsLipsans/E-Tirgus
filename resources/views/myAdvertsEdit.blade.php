@@ -67,7 +67,7 @@
                                     {{$advert->text}}
                                 </textarea>
 
-                                <button class="ml-3" type="submit">Submit</button>
+                                <x-button class="ml-3" type="submit">Submit</x-button>
                     </form>
                         </div> 
                     </div>         

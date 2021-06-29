@@ -10,8 +10,8 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <a 
                     class="m-2 boarder-b-2 pb-2 border-dotted bold text-blue-500"
-                    href="/dashboard">
-                    Back to Dashboard
+                    href="/myAdverts/show">
+                    Back to Show myAdverts
                     
                 </a>
                 <div class="p-6 bg-white border-b border-gray-200">
@@ -37,15 +37,7 @@
                     <br>                    
                     <span class= ml-2>Created at: {{$advert->created_at }}</span>
                     <span class= ml-2>Updated at: {{$advert->updated_at }}</span>
-                    <span class= ml-2>Posted by:                         
-                        <a class="m-2 boarder-b-2 pb-2 border-dotted bold text-blue-500"
-                            href="/dashboard">
-                            @foreach($users as $user )
-                                @if($advert->users_id == $user->id)
-                            {{$user->name }}</a>
-                                @endif
-                            @endforeach                        
-                    </span>                    
+                    <span class= ml-2>Posted by: Me</span>                    
                     @endforeach      
                 </div>
             </div>

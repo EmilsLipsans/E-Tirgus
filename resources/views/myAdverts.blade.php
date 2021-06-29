@@ -11,12 +11,12 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     <form action="/myAdverts/show" method="get">
                         <h1 class="text-center px-8 m-4">                       
-                            <button class="badge-dark" type="submit">Show my Adverts!</button>
+                            <x-button class="badge-dark" type="submit">Show my Adverts!</x-button>
                         </h1>
                     </form>
                     <form action="/myAdverts/show/create" method="get">
                         <h1 class="text-center px-8">                       
-                            <button class="badge-dark" type="submit">Create new Adverts!</button>
+                            <x-button class="badge-dark" type="submit">Create new Adverts!</x-button>
                         </h1>
                     </form>
                         

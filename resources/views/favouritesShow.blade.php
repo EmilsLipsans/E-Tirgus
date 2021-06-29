@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('See more view') }}
+            {{ __('Show more view') }}
         </h2>
     </x-slot>
 
@@ -16,11 +16,18 @@
                 </a>
                 <div class="p-6 bg-white border-b border-gray-200">
                     @foreach ($adverts as $advert)                  
-                    
-                    <h1 class= "ml-2 bold">Title: {{$advert->title }}</h1>    
-                    <h1 class= ml-2>Condition: {{$advert->condition }}</h1>
-                    <h1 class= ml-2>Price: {{$advert->price }}</h1>
-                    <h1 class= ml-2>Location: {{$advert->location }}</h1>
+                        <div>
+                            <center><img
+                                src= "{{asset('images/' . $advert->image_path)}}"
+                                alt=""
+                                class="w-180 mb-8 shadow-xl"
+                            >                        
+                        </img></center>
+                        </div>
+                        <h1 class= "ml-2 bold">Title: {{$advert->title }}</h1>    
+                        <h1 class= ml-2>Condition: {{$advert->condition }}</h1>
+                        <h1 class= ml-2>Price: {{$advert->price }}</h1>
+                        <h1 class= ml-2>Location: {{$advert->location }}</h1>
                     @foreach($categories as $categorie )
                         @if($advert->categorie_id == $categorie->id)
                             <h1 class= ml-2>Kategorija: {{$categorie->name }}</h1>

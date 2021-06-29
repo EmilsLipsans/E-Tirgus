@@ -48,21 +48,22 @@
                                             break;                                        
                                         }                                    
                                     }        
-                                @endphp                                
-                                @if($isfav)
-                                    <form method="POST" action="/dashboard/{{$advert->id}}"> 
-                                        @csrf
-                                        @method('delete')
-                                        <button class="ml-3 italic text-red-500" type="submit">Remove from favourites</button>                                           
-                                    </form>                                    
-                                @else
-                                    <form method="POST" action="/favourites/store">
-                                        @csrf
-                                        <input type="hidden" id="advertId" name="advertId" value="{{$advert->id}}">
-                                        <button class="ml-3 italic text-yellow-500" type="submit">Add to favourites</button>
-                                    </form>
-                                @endif    
-                                
+                                @endphp
+                                @if(Auth::user())
+                                    @if($isfav)
+                                        <form method="POST" action="/dashboard/{{$advert->id}}"> 
+                                            @csrf
+                                            @method('delete')
+                                            <button class="ml-3 italic text-red-500" type="submit">Remove from favourites</button>                                           
+                                        </form>                                    
+                                    @else
+                                        <form method="POST" action="/favourites/store">
+                                            @csrf
+                                            <input type="hidden" id="advertId" name="advertId" value="{{$advert->id}}">
+                                            <button class="ml-3 italic text-yellow-500" type="submit">Add to favourites</button>
+                                        </form>
+                                    @endif    
+                                @endif 
                             </div>
                             <p class= ml-12>
                                 <span class= ml-2>Title: {{$advert->title }}</span>

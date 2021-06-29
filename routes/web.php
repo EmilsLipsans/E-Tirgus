@@ -18,17 +18,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',[MainController::class, 'index'])->name('dashboard');
 
 Route::get('/myAdverts', function () {
     return view('myAdverts');
 })->middleware(['auth'])->name('myAdverts');
 Route::resource('/myAdverts/show', AdvertController::class);
+Route::get('/myAdverts/{id}/show',[AdvertController::class, 'show'])->middleware(['auth'])->name('dashboardShow');
 
-Route::get('/dashboard',[MainController::class, 'index'])->middleware(['auth'])->name('dashboard');
-Route::get('/dashboard/{id}/show',[MainController::class, 'show'])->middleware(['auth'])->name('dashboardShow');
+Route::get('/dashboard',[MainController::class, 'index'])->name('dashboard');
+Route::get('/dashboard/{id}/show',[MainController::class, 'show'])->name('dashboardShow');
 Route::delete('/delete/{id}',[MainController::class, 'destroy'])->middleware(['auth'])->name('favouritesStore');
 
 Route::delete('/dashboard/{id}',[FavouriteController::class, 'destroy'])->middleware(['auth'])->name('favouritesStore');

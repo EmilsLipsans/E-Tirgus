@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Advert;
 use App\Models\Categorie;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use function view;
@@ -46,6 +47,19 @@ class AdvertController extends Controller
      */
     public function store(Request $request)
     {
+       
+        $request->validate([
+            'title' => 'required',
+            'condition' => 'required',
+            'price' => 'required|integer|min:0|max:10000000',
+            'location' => 'required',           
+            'image' =>'mimes:jpg,png,jpeg|max:5048'           
+        ]);
+        
+        $newImageName = time() . '-' . $request->title . '.' . $request->image->extension();
+        
+        $request->image->move(public_path('images'),$newImageName);
+                      
         $userId = Auth::id();
         $advert = Advert::create([
         'title' => $request->input('title'),
@@ -54,7 +68,8 @@ class AdvertController extends Controller
         'location' => $request->input('location'), 
         'text' => $request->input('text'),
         'categorie_id' => $request->input('catagorie'),
-        'users_id' => $userId 
+        'users_id' => $userId,
+        'image_path' => $newImageName
         ]);
         return redirect('/myAdverts/show');
            
@@ -68,7 +83,15 @@ class AdvertController extends Controller
      */
     public function show($id)
     {
-        return $id;
+        $adverts = Advert::all()->where('id',$id);
+        $categories = Categorie::all();        
+        $users = User::all();
+        
+        return view('myAdvertsID_Show',[
+            'adverts' => $adverts, 
+            'categories' => $categories,
+            'users' => $users,
+            ]);
     }
 
     /**

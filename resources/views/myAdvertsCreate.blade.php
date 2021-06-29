@@ -14,11 +14,11 @@
                 </a>
                 <div align="center" class="p-6 bg-white border-b border-gray-200 right-10">                   
                     @csrf
-                    <form method="POST" action="/myAdverts/show">
+                    <form method="POST" action="/myAdverts/show" enctype="multipart/form-data">
                         @csrf
                         <div class="grid grid-cols-1 gap-2">
                              
-                            <div class="grid grid-rows-3 gap-6">
+                            <div class="grid grid-rows-3 gap-6">                                
                                 <label for="title">Title</label>
                                 <x-input id="title" class="block  w-full" type="text" name="title" placeholder="Sporta jaka"/> 
                                 <label for="condition">Condition</label>
@@ -44,11 +44,12 @@
                                 <label for="text">Text</label>
                                 <textarea name="text" id="text">
                                 </textarea>
-
-                                <button class="ml-3" type="submit">Submit</button>
+                                <label for="image">Upload image</label>
+                                <input class="block shadow-5xl mb-10 p-2 w-80 itacli placeholder-gray-400" type="file" name="image"/> 
+                                <x-button type="submit">Submit</x-button>
+                            </div> 
+                        </div>
                     </form>
-                        </div> 
-                    </div>         
                 </div>             
             </div>
         </div>        
