@@ -56,10 +56,13 @@ class AdvertController extends Controller
             'image' =>'mimes:jpg,png,jpeg|max:5048'           
         ]);
         
-        $newImageName = time() . '-' . $request->title . '.' . $request->image->extension();
-        
-        $request->image->move(public_path('images'),$newImageName);
-                      
+        if($request->file('image')){
+            $newImageName = time() . '-' . $request->title . '.' . $request->image->extension();
+            $request->image->move(public_path('images'),$newImageName);
+        }
+        else{
+            $newImageName = 'default.jpg';           
+        }
         $userId = Auth::id();
         $advert = Advert::create([
         'title' => $request->input('title'),
@@ -120,6 +123,15 @@ class AdvertController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if($request->file('image')){
+            $newImageName = time() . '-' . $request->title . '.' . $request->image->extension();
+            $request->image->move(public_path('images'),$newImageName);
+        }
+        else{
+            $newImageName = 'default.jpg';           
+        }
+        
+        $userId = Auth::id();       
         $advert = Advert::where('id',$id)
             ->update([
                 'title' => $request->input('title'),
@@ -128,7 +140,8 @@ class AdvertController extends Controller
                 'location' => $request->input('location'), 
                 'text' => $request->input('text'),
                 'categorie_id' => $request->input('catagorie'),
-                'users_id' => 1 
+                'users_id' => $userId,
+                'image_path' => $newImageName
         ]);
         return redirect('/myAdverts/show');
     }

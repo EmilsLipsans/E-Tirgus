@@ -12,16 +12,16 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/D:/wamp64/www/E-Tirgus/resources/views/myAdvertsCreate.blade.php</file>
+            <file>file:/D:/wamp64/www/E-Tirgus/resources/views/inc/filter.blade.php</file>
             <file>file:/D:/wamp64/www/E-Tirgus/resources/views/dashboard.blade.php</file>
-            <file>file:/D:/wamp64/www/E-Tirgus/resources/views/users.blade.php</file>
-            <file>file:/D:/wamp64/www/E-Tirgus/app/Providers/AuthServiceProvider.php</file>
-            <file>file:/D:/wamp64/www/E-Tirgus/app/Http/Controllers/ProfileController.php</file>
+            <file>file:/D:/wamp64/www/E-Tirgus/resources/views/myAdvertsID_Show.blade.php</file>
             <file>file:/D:/wamp64/www/E-Tirgus/routes/web.php</file>
-            <file>file:/D:/wamp64/www/E-Tirgus/app/Http/Controllers/UserController.php</file>
-            <file>file:/D:/wamp64/www/E-Tirgus/app/Models/User.php</file>
+            <file>file:/D:/wamp64/www/E-Tirgus/resources/views/favouritesShow.blade.php</file>
+            <file>file:/D:/wamp64/www/E-Tirgus/resources/views/myAdvertsEdit.blade.php</file>
             <file>file:/D:/wamp64/www/E-Tirgus/resources/views/profile.blade.php</file>
             <file>file:/D:/wamp64/www/E-Tirgus/app/Http/Controllers/AdvertController.php</file>
-            <file>file:/D:/wamp64/www/E-Tirgus/resources/views/layouts/navigation.blade.php</file>
+            <file>file:/D:/wamp64/www/E-Tirgus/resources/views/dashboardShow.blade.php</file>
         </group>
     </open-files>
 </project-private>

@@ -23,7 +23,7 @@
                             <h1 class= ml-2>Role: {{$role}}</h1>                                                 
                     </div> 
                 @endforeach 
-            </div>                        
+            </div>  
         </div>
     </div>
 </x-app-layout>

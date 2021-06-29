@@ -6,7 +6,8 @@
     </x-slot>
      
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">          
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            
                 <div class="form-group m-2">
                     <label for="price">Price</label>
                     <select name="price" id="price" class="form-control input-lg dynamic" data-dependet="state">

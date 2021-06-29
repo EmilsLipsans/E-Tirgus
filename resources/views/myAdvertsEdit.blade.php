@@ -66,6 +66,8 @@
                                 <textarea name="text" id="text" >
                                     {{$advert->text}}
                                 </textarea>
+                                <label for="image">Upload image</label>
+                                <input class="block shadow-5xl mb-10 p-2 w-80 itacli placeholder-gray-400" type="file" name="image"/>
 
                                 <x-button class="ml-3" type="submit">Submit</x-button>
                     </form>
