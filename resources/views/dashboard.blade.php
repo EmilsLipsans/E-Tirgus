@@ -7,28 +7,35 @@
      
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            
-                <div class="form-group m-2">
-                    <label for="price">{{ __('messages.Price') }}</label>
-                    <select name="price" id="price" class="form-control input-lg dynamic" data-dependet="state">
-                        <option value="">Any</option>
-                    </select>  
+            <form method="POST" action="/dashboard">
+                @csrf
+                @method('Post') 
+                <div class="form-group m-2">                    
                     <label for="location">{{ __('messages.Location') }}</label>
                     <select name="location" id="location" class="form-control input-lg dynamic" data-dependet="state">
-                        <option value="">Any</option>
+                        <option value="">{{ __('messages.Any') }}</option>
+                        <option value="Riga">Riga</option>
+                        <option value="Daugavpils">Daugavpils</option>
+                        <option value="Liepaja">Liepaja</option>
                     </select>
-
                     <label for="condition">{{ __('messages.Condition') }}</label>
                     <select name="condition" id="condition" class="form-control input-lg dynamic" data-dependet="state">
-                        <option value="">Any</option>
+                        <option value="">{{ __('messages.Anym') }}</option>
+                        <option value="NEW">{{ __('messages.NEW') }}</option>
+                        <option value="USED">{{ __('messages.USED') }}</option>
+                        <option value="BROKEN">{{ __('messages.BROKEN') }}</option>
                     </select>
                     
                     <label for="category">{{ __('messages.Category') }}</label>
                     <select name="category" id="category" class="form-control input-lg dynamic" data-dependet="state">
-                        <option value="">Any</option>
+                        <option value="">{{ __('messages.Any') }}</option>
+                        @foreach($categories as $categorie )
+                            <option value="{{$categorie->id }}">{{ __('messages.' . $categorie->name)}}</option>
+                        @endforeach 
                     </select>
                     <x-button class="ml-3" type="submit">{{ __('messages.Search') }}</x-button>                 
                 </div>
+            </form>
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 
                 <div class="p-6 bg-white border-b border-gray-200">
@@ -88,8 +95,7 @@
                                 </div>
                             @endcan                           
                         </div>
-                    @endforeach
-            {{$adverts->links() }}
+                    @endforeach                
             </div>
         </div>
     </div>

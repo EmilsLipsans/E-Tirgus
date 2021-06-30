@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Advert;
 use App\Models\Categorie;
 use App\Models\Favourite;
+use App\Http\Controllers;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -20,12 +21,15 @@ class MainController extends Controller
      */
     public function index()
     {
-        $adverts = Advert::paginate(8);
+        $adverts = Advert::all();
+        $categories = Categorie::all();
         $favourites = Favourite::all()->where('users_id', Auth::id());
        
         return view('dashboard',[
             'adverts' => $adverts,
             'favourites' => $favourites, 
+            'categories' => $categories,
+            'showPagination' => 1,
             ]);
     }
 
@@ -110,5 +114,30 @@ class MainController extends Controller
         {
             return redirect('dashboard')->withErrors('Access denied!');
         }        
+    }
+    public function filter(Request $request)
+    {
+
+        $favourites = Favourite::all()->where('users_id', Auth::id());
+        $categories = Categorie::all();
+        
+        $query = Advert::all();      
+        if ($request->location != null) {
+            $query = $query->whereIn('location',$request->location);
+        }
+
+        if ($request->condition != null) {
+            $query = $query->where('condition', $request->condition);
+        }
+
+        if ($request->category != null) {
+            $query = $query->where('categorie_id', $request->category);
+        }          
+        return view('dashboard',[
+            'adverts' => $query,
+            'favourites' => $favourites,
+            'categories' => $categories,
+            'showPagination' => is_null(request('all')),
+            ]);     
     }
 }

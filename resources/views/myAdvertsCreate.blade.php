@@ -13,7 +13,15 @@
                     {{ __('messages.Back to MyAdverts')}}
                 </a>
                 <div align="center" class="p-6 bg-white border-b border-gray-200 right-10">                   
-                    @csrf
+                    @if($errors->any())
+                        <div class="w-4/8 m-auto text-center">
+                            @foreach($errors->all() as $error)
+                                <li class="text-red-500 list-none">
+                                    {{ __('messages.' . $error)}}
+                                </li>
+                            @endforeach    
+                        </div>
+                    @endif
                     <form method="POST" action="/myAdverts/show" enctype="multipart/form-data">
                         @csrf
                         <div class="grid grid-cols-1 gap-2">
@@ -21,6 +29,7 @@
                             <div class="grid grid-rows-3 gap-6">                                
                                 <label for="title">{{ __('messages.Title')}}</label>
                                 <x-input id="title" class="block  w-full" type="text" name="title"/> 
+                                
                                 <label for="condition">{{ __('messages.Condition')}}</label>
                                 <select id="condition" name="condition">
                                     <option value="NEW">{{ __('messages.NEW')}}</option>
@@ -38,7 +47,7 @@
                                 <label for="catagorie">{{ __('messages.Category')}}</label>
                                 <select id="catagorie" name="catagorie">
                                     @foreach($categories as $categorie )
-                                    <option value="{{$categorie->id }}">{{$categorie->name }}</option>
+                                    <option value="{{$categorie->id }}">{{ __('messages.' . $categorie->name)}}</option>
                                     @endforeach                                    
                                 </select> 
                                 <label for="text">{{ __('messages.Description')}}</label>

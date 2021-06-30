@@ -58,10 +58,15 @@ return [
     'Already registered?' => 'Already registered?',
     'Unban user' => 'Unban user',
     'Ban user' => 'Ban user',
+    'The title field is required.' => 'The title field is required!',
+    'The price field is required.' => 'The price field is required!',
     'Email Password Reset Link' => 'Email Password Reset Link',
     'No problem' => 'Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.', 
-
-   
+    'Search adverts' => 'Search adverts',
+    'Any' => 'Any',
+    'Anym' => 'Any',
+    'Under' => 'Under',
+    'Under' => 'Under',    
 ]; 
     
    

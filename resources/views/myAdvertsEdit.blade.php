@@ -12,7 +12,16 @@
                     href="/myAdverts/show">
                     {{ __('messages.Back to Show MyAdverts')}}
                 </a>
-                <div align="center" class="p-6 bg-white border-b border-gray-200 right-10">                   
+                <div align="center" class="p-6 bg-white border-b border-gray-200 right-10"> 
+                    @if($errors->any())
+                        <div class="w-4/8 m-auto text-center">
+                            @foreach($errors->all() as $error)
+                                <li class="text-red-500 list-none">
+                                    {{ __('messages.' . $error)}}
+                                </li>
+                            @endforeach    
+                        </div>
+                    @endif
                     <form method="POST" action="/myAdverts/show/{{$advert->id}}">
                         @csrf
                         @method('Put')                     
@@ -58,7 +67,7 @@
                                 
                                 @foreach($categories as $categorie )
                                     @if($advert->categorie_id != $categorie->id)
-                                        <option value="{{$advert->categorie_id}}">{{$categorie->name}}</option>
+                                        <option value="{{$advert->categorie_id}}">{{ __('messages.' . $categorie->name)}}</option>
                                     @endif
                                 @endforeach                                                                          
                                 </select> 

@@ -2,10 +2,10 @@
 
 use App\Http\Controllers\AdvertController;
 use App\Http\Controllers\FavouriteController;
+use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\LanguageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,19 +27,21 @@ Route::get('/myAdverts', function () {
 Route::resource('/myAdverts/show', AdvertController::class);
 Route::get('/myAdverts/{id}/show',[AdvertController::class, 'show'])->middleware(['auth'])->name('dashboardShow');
 
-Route::get('/dashboard',[MainController::class, 'index'])->name('dashboard');
+Route::get('/dashboard',[MainController::class, 'filter']);
+Route::post('/dashboard',[MainController::class, 'filter']);
+//Route::get('/dashboard',[MainController::class, 'index'])->name('dashboard');
 Route::get('/dashboard/{id}/show',[MainController::class, 'show'])->name('dashboardShow');
-Route::delete('/delete/{id}',[MainController::class, 'destroy'])->middleware(['auth'])->name('favouritesStore');
+Route::delete('/delete/{id}',[MainController::class, 'destroy'])->middleware(['auth']);
 
-Route::delete('/dashboard/{id}',[FavouriteController::class, 'destroy'])->middleware(['auth'])->name('favouritesStore');
+Route::delete('/dashboard/{id}',[FavouriteController::class, 'destroy'])->middleware(['auth']);
 
 Route::get('/favourites',[FavouriteController::class, 'index'])->middleware(['auth'])->name('favourites');
 Route::get('/favourites/{id}/show',[FavouriteController::class, 'show'])->middleware(['auth'])->name('favouritesShow');
-Route::post('/favourites/store',[FavouriteController::class, 'store'])->middleware(['auth'])->name('favouritesStore');
-Route::delete('/favourites/{id}',[FavouriteController::class, 'destroy2'])->middleware(['auth'])->name('favouritesStore');
+Route::post('/favourites/store',[FavouriteController::class, 'store'])->middleware(['auth']);
+Route::delete('/favourites/{id}',[FavouriteController::class, 'destroy2'])->middleware(['auth']);
 
 Route::get('/users',[UserController::class, 'index'])->middleware(['auth'])->name('users');
-Route::post('/users/{id}',[UserController::class, 'update'])->middleware(['auth'])->name('favouritesStore');
+Route::post('/users/{id}',[UserController::class, 'update'])->middleware(['auth']);
 require __DIR__.'/auth.php';
 
 Route::get('lang/{locale}',LanguageController::class);

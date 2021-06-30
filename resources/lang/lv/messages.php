@@ -58,8 +58,14 @@ return [
     'Confirm Password' => 'Apstiprini paroli',
     'Already registered?' => 'Jau reģistrējies?',
     'Unban user' => 'Atbloķēt lietotāju',
-    'Ban user' => 'Bloķēt lietotāju',   
+    'Ban user' => 'Bloķēt lietotāju',
+    'The title field is required.' => 'Nosaukuma lauks ir obligāti jāazipilda!',
+    'The price field is required.' => 'Cenas lauks ir obligāti jāazipilda!',
     'Email Password Reset Link' => 'E-pasta paroles atiestatīšanas saite',
     'No problem' => 'Aizmirsi savu paroli? Nekādu problēmu. Vienkārši paziņojiet mums savu e-pasta adresi, un mēs jums nosūtīsim e-pastu paroles atiestatīšanas saiti, kas ļaus jums izvēlēties jaunu.', 
-
+    'Search adverts' => 'Meklēt sludinājumu',
+    'Any' => 'Jebkura',
+    'Anym' => 'Jebkurš',
+    'Under' => 'Zem',
+    
 ]; 

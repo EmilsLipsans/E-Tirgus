@@ -123,6 +123,13 @@ class AdvertController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'title' => 'required',
+            'condition' => 'required',
+            'price' => 'required|integer|min:0|max:10000000',
+            'location' => 'required',                      
+        ]);
+        
         if($request->file('image')){
             $newImageName = time() . '-' . $request->title . '.' . $request->image->extension();
             $request->image->move(public_path('images'),$newImageName);
@@ -158,5 +165,5 @@ class AdvertController extends Controller
         $advert->delete();
         return redirect('/myAdverts/show');
     }
-    
+   
 }
