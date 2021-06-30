@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Update Advert')}}
+            {{ __('messages.Update Advert')}}
         </h2>
     </x-slot>
     <div class="py-12">
@@ -9,8 +9,8 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <a 
                     class="m-2 boarder-b-2 pb-2 border-dotted bold text-blue-500"
-                    href="/myAdverts">
-                    Back to MyAdverts
+                    href="/myAdverts/show">
+                    {{ __('messages.Back to Show MyAdverts')}}
                 </a>
                 <div align="center" class="p-6 bg-white border-b border-gray-200 right-10">                   
                     <form method="POST" action="/myAdverts/show/{{$advert->id}}">
@@ -18,26 +18,26 @@
                         @method('Put')                     
                         <div class="grid grid-cols-1 gap-2">
                             <div class="grid grid-rows-3 gap-6">
-                                <label for="title">Title</label>
+                                <label for="title">{{ __('messages.Title')}}</label>
                                 <x-input id="title" class="block  w-full" type="text" name="title" value="{{$advert->title}}"/> 
-                                <label for="condition">Condition</label>
+                                <label for="condition">{{ __('messages.Condition')}}</label>
                                 <select id="condition" name="condition">
-                                    <option value="{{$advert->condition}}">Current - {{$advert->condition}}</option>
+                                    <option value="{{$advert->condition}}">{{ __('messages.Current')}} - {{ __('messages.' . $advert->condition )}} </option>
                                     @if($advert->condition != 'NEW')
-                                    <option value="NEW">NEW</option>
+                                    <option value="NEW">{{ __('messages.NEW')}}</option>
                                     @endif
                                     @if($advert->condition != 'USED')
-                                    <option value="USED">USED</option>
+                                    <option value="USED">{{ __('messages.USED')}}</option>
                                     @endif
                                     @if($advert->condition != 'BROKEN')
-                                    <option value="BROKEN">BROKEN</option>
+                                    <option value="BROKEN">{{ __('messages.BROKEN')}}</option>
                                     @endif
                                 </select> 
-                                <label for="price">Price</label>
+                                <label for="price">{{ __('messages.Price')}}</label>
                                 <input class="block  w-full" type="number" name="price" value="{{$advert->price}}"/>
-                                <label for="location">Location</label>
+                                <label for="location">{{ __('messages.Location')}}</label>
                                 <select id="location" name="location">
-                                    <option value="{{$advert->location}}">Current - {{$advert->location}}</option>
+                                    <option value="{{$advert->location}}">{{ __('messages.Current')}} - {{$advert->location}}</option>
                                     @if($advert->location != 'Riga')
                                     <option value="Riga">Riga</option>
                                     @endif
@@ -48,11 +48,11 @@
                                     <option value="Liepaja">Liepaja</option>
                                     @endif
                                 </select>
-                                <label for="catagorie">Category</label>
+                                <label for="catagorie">{{ __('messages.Category')}}</label>
                                 <select id="catagorie" name="catagorie">
                                 @foreach($categories as $categorie )
                                     @if($advert->categorie_id == $categorie->id)
-                                        <option value="{{$advert->categorie_id}}">Current - {{$categorie->name}}</option>
+                                        <option value="{{$advert->categorie_id}}">{{ __('messages.Current')}} - {{ __('messages.' . $categorie->name)}}</option>
                                     @endif
                                 @endforeach
                                 
@@ -62,14 +62,14 @@
                                     @endif
                                 @endforeach                                                                          
                                 </select> 
-                                <label for="text">Text</label>
+                                <label for="text">{{ __('messages.Description')}}</label>
                                 <textarea name="text" id="text" >
                                     {{$advert->text}}
                                 </textarea>
-                                <label for="image">Upload image</label>
+                                <label for="image">{{ __('messages.Upload image')}}</label>
                                 <input class="block shadow-5xl mb-10 p-2 w-80 itacli placeholder-gray-400" type="file" name="image"/>
 
-                                <x-button class="ml-3" type="submit">Submit</x-button>
+                                <x-button class="ml-3" type="submit">{{ __('messages.Update')}}</x-button>
                     </form>
                         </div> 
                     </div>         

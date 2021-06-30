@@ -5,6 +5,7 @@ use App\Http\Controllers\FavouriteController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\LanguageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,6 +41,8 @@ Route::delete('/favourites/{id}',[FavouriteController::class, 'destroy2'])->midd
 Route::get('/users',[UserController::class, 'index'])->middleware(['auth'])->name('users');
 Route::post('/users/{id}',[UserController::class, 'update'])->middleware(['auth'])->name('favouritesStore');
 require __DIR__.'/auth.php';
+
+Route::get('lang/{locale}',LanguageController::class);
 
 Route::get('/profile',[ProfileController::class, 'index'])->middleware(['auth'])->name('profile');
 //Route::resource('/dashboard/show', MainController::class);

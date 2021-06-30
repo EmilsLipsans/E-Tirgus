@@ -17,10 +17,10 @@
                     }                   
                     @endphp
                     <div class="p-6 bg-white border-b border-gray-200">                                                                               
-                            <h1 class= ml-2>Name: {{$user->name }}</a></h1>
-                            <h1 class= ml-2>Email: {{$user->email }}</h1>
-                            <h1 class= ml-2>Created at: {{$user->created_at }}</h1>                                                                                                 
-                            <h1 class= ml-2>Role: {{$role}}</h1>                                                 
+                            <h1 class= ml-2>{{ __('messages.Name') }}: {{$user->name }}</a></h1>
+                            <h1 class= ml-2>{{ __('messages.Email') }}: {{$user->email }}</h1>
+                            <h1 class= ml-2>{{ __('messages.Created at') }}: {{$user->created_at }}</h1>                                                                                                 
+                            <h1 class= ml-2>{{ __('messages.Role') }}: {{ __('messages.' . $role) }}</h1>                                                 
                     </div> 
                 @endforeach 
             </div>  

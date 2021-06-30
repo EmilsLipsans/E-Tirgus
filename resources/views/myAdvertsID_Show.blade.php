@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Show more view') }}
+            {{ __('messages.Show more view') }}
         </h2>
     </x-slot>
 
@@ -11,7 +11,7 @@
                 <a 
                     class="m-2 boarder-b-2 pb-2 border-dotted bold text-blue-500"
                     href="/myAdverts/show">
-                    Back to Show myAdverts
+                    {{ __('messages.Back to Show MyAdverts') }}
                     
                 </a>
                 <div class="p-6 bg-white border-b border-gray-200">
@@ -24,20 +24,20 @@
                         >                        
                     </img></center>
                     </div>
-                    <h1 class= "ml-2 bold">Title: {{$advert->title }}</h1>    
-                    <h1 class= ml-2>Condition: {{$advert->condition }}</h1>
-                    <h1 class= ml-2>Price: {{$advert->price }}</h1>
-                    <h1 class= ml-2>Location: {{$advert->location }}</h1>
+                    <h1 class= "ml-2 bold">{{ __('messages.Title') }}: {{$advert->title }}</h1>    
+                    <h1 class= ml-2>{{ __('messages.Condition') }}: {{ __('messages.' . $advert->condition) }}</h1>
+                    <h1 class= ml-2>{{ __('messages.Price') }}: {{$advert->price }}</h1>
+                    <h1 class= ml-2>{{ __('messages.Location') }}: {{$advert->location }}</h1>
                     @foreach($categories as $categorie )
                         @if($advert->categorie_id == $categorie->id)
-                            <h1 class= ml-2>Kategorija: {{$categorie->name }}</h1>
+                            <h1 class= ml-2>{{ __('messages.Category') }}: {{ __('messages.' . $categorie->name) }}</h1>
                         @endif
                     @endforeach
-                    <h1 class= ml-2>Text: {{$advert->text }}</h1>
+                    <h1 class= ml-2>{{ __('messages.Description') }}: {{$advert->text }}</h1>
                     <br>                    
-                    <span class= ml-2>Created at: {{$advert->created_at }}</span>
-                    <span class= ml-2>Updated at: {{$advert->updated_at }}</span>
-                    <span class= ml-2>Posted by: Me</span>                    
+                    <span class= ml-2>{{ __('messages.Created at') }}: {{$advert->created_at }}</span>
+                    <span class= ml-2>{{ __('messages.Updated at') }}: {{$advert->updated_at }}</span>
+                    <span class= ml-2>{{ __('messages.Posted by') }}: {{ __('messages.Me') }}</span>                    
                     @endforeach      
                 </div>
             </div>

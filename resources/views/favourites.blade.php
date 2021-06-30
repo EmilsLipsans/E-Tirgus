@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Favourites') }}
+            {{ __('messages.Favourites') }}
         </h2>
     </x-slot>
 
@@ -16,7 +16,7 @@
                                     <a 
                                         class="boarder-b-2 pb-2 border-dotted italic text-gray-500"
                                         href="favourites/{{$advert->id}}/show">
-                                        Show more &rarr;
+                                        {{ __('messages.Show more') }} &rarr;
                                     </a>
                                     <form action="/favourites/{{$advert->id}}"class="pt-1" method="POST">
                                         @csrf
@@ -24,15 +24,15 @@
                                         <button
                                             type="submit"
                                             class="boarder-b-2 pb-2 border-dotted italic text-red-500">
-                                            Remove from favourites &rarr;
+                                            {{ __('messages.Remove from favourites') }} &rarr;
                                         </button>
                                     </form>
                                 </div>                                
                                 <p class= ml-12>
-                                <span class= ml-2>Title: {{$advert->title }}</span>
-                                <span class= ml-2>Condition: {{$advert->condition }}</span>
-                                <span class= ml-2>Price: {{$advert->price }}</span>
-                                <span class= ml-2>Location: {{$advert->location }}</span>                                                                         
+                                    <span class= ml-2>{{ __('messages.Title') }}: {{$advert->title }}</span>
+                                    <span class= ml-2>{{ __('messages.Condition') }}: {{$advert->condition }}</span>
+                                    <span class= ml-2>{{ __('messages.Price') }}: {{$advert->price }}</span>
+                                    <span class= ml-2>{{ __('messages.Location') }}: {{$advert->location }}</span>                                                                         
                                 </p>                        
                             </div>
                         @endif

@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Users') }}
+            {{ __('messages.Users') }}
         </h2>
     </x-slot>
 
@@ -15,21 +15,21 @@
                                 <form method="POST" action="/users/{{$user->id}}">
                                     @csrf
                                     <input type="hidden" id="status" name="status" value="1">
-                                    <button class="ml-3 italic text-blue-500" type="submit">Unban user </button>
+                                    <button class="ml-3 italic text-blue-500" type="submit">{{ __('messages.Unban user') }} </button>
                                 </form>
                                 
                             @else
                                 <form method="POST" action="/users/{{$user->id}}">
                                     @csrf
                                     <input type="hidden" id="status" name="status" value="0">
-                                    <button class="ml-3 italic text-red-500" type="submit">Ban user </button>
+                                    <button class="ml-3 italic text-red-500" type="submit">{{ __('messages.Ban user') }} </button>
                                 </form>                           
                             @endif
                         </div>                                
                         <p class= ml-12>
-                            <span class= ml-2>Name:<a class="m-2 boarder-b-2 pb-2 border-dotted bold text-blue-500" href="/dashboard"> {{$user->name }}</a></span>
-                            <span class= ml-2>Email: {{$user->email }}</span>
-                            <span class= ml-2>Created at: {{$user->created_at }}</span>                                                                                                 
+                            <span class= ml-2>{{ __('messages.Name') }}: {{$user->name }}</span>
+                            <span class= ml-2>{{ __('messages.Email') }}: {{$user->email }}</span>
+                            <span class= ml-2>{{ __('messages.Created at') }}: {{$user->created_at }}</span>                                                                                                 
                         </p>                        
                     </div>                            
                 @endforeach 

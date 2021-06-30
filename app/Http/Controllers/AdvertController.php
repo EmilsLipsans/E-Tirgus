@@ -158,4 +158,5 @@ class AdvertController extends Controller
         $advert->delete();
         return redirect('/myAdverts/show');
     }
+    
 }

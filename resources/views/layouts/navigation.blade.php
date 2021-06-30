@@ -17,17 +17,23 @@
                     </x-nav-link>
                     @if(Auth::user())
                         <x-nav-link :href="route('myAdverts')" :active="request()->routeIs('myAdverts')">
-                            {{ __('MyAdverts') }}
+                            {{ __('messages.MyAdverts') }}
                         </x-nav-link>                    
                         <x-nav-link :href="route('favourites')" :active="request()->routeIs('favourites')">
-                            {{ __('Favourites') }}
+                            {{ __('messages.Favourites') }}
                         </x-nav-link>
                     @endif
                     @can('is-admin')
                         <x-nav-link :href="route('users')" :active="request()->routeIs('users')">
-                            {{ __('Users') }}
+                            {{ __('messages.Users') }}
                         </x-nav-link>
                     @endcan
+                    <x-nav-link :href="url('lang/lv')">
+                        LV
+                    </x-nav-link>
+                    <x-nav-link :href="url('lang/en')">
+                        EN
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -38,10 +44,10 @@
                         @auth
                             <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 underline">Dashboard</a>
                         @else
-                            <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Log in</a>
+                            <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">{{ __('messages.Log in') }}</a>
 
                             @if (Route::has('register'))
-                                <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
+                                <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">{{ __('messages.Register') }}</a>
                             @endif
                         @endauth
                     </div>
@@ -69,11 +75,11 @@
                             <x-dropdown-link :href="route('logout')"
                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                {{ __('Log Out') }}
+                                {{ __('messages.Log Out') }}
                             </x-dropdown-link>
                         </form>
                         <x-dropdown-link :href="route('profile')">
-                            {{ __('My Profile') }}
+                            {{ __('messages.My Profile') }}
                         </x-dropdown-link>
                     </x-slot>
                 </x-dropdown>
