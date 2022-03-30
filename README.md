@@ -1,7 +1,4 @@
- 
-@EmilsLipsans 
-  
-<h3 align="center">E-Tirgus</h3>
+ <h3 align="center">E-Tirgus</h3>
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
